@@ -1,0 +1,12 @@
+__pycache__/
+/.idea/
+/.minecraft/
+/build/
+/dist/
+/logs/
+/temp/
+*.json
+*.spec
+icon.ico
+*.exe
+*.ui
