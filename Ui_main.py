@@ -19,6 +19,7 @@ from PySide6.QtWidgets import (QApplication, QComboBox, QHBoxLayout, QLabel,
     QLineEdit, QPushButton, QSizePolicy, QSlider,
     QSpacerItem, QTabWidget, QToolButton, QVBoxLayout,
     QWidget)
+import gmcl_rc
 
 class Ui_MinecraftLauncher(object):
     def setupUi(self, MinecraftLauncher):
@@ -40,10 +41,10 @@ class Ui_MinecraftLauncher(object):
         self.main = QWidget()
         self.main.setObjectName(u"main")
         self.main.setMinimumSize(QSize(0, 0))
-        self.widget = QWidget(self.main)
-        self.widget.setObjectName(u"widget")
-        self.widget.setGeometry(QRect(10, 9, 831, 431))
-        self.horizontalLayout_4 = QHBoxLayout(self.widget)
+        self.layoutWidget = QWidget(self.main)
+        self.layoutWidget.setObjectName(u"layoutWidget")
+        self.layoutWidget.setGeometry(QRect(10, 9, 831, 431))
+        self.horizontalLayout_4 = QHBoxLayout(self.layoutWidget)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.horizontalSpacer = QSpacerItem(178, 268, QSizePolicy.Expanding, QSizePolicy.Minimum)
@@ -58,18 +59,18 @@ class Ui_MinecraftLauncher(object):
 
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.version_label = QLabel(self.widget)
+        self.version_label = QLabel(self.layoutWidget)
         self.version_label.setObjectName(u"version_label")
         self.version_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.horizontalLayout_3.addWidget(self.version_label)
 
-        self.comboBox = QComboBox(self.widget)
+        self.comboBox = QComboBox(self.layoutWidget)
         self.comboBox.setObjectName(u"comboBox")
 
         self.horizontalLayout_3.addWidget(self.comboBox)
 
-        self.toolButton = QToolButton(self.widget)
+        self.toolButton = QToolButton(self.layoutWidget)
         self.toolButton.setObjectName(u"toolButton")
         sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
         sizePolicy1.setHorizontalStretch(0)
@@ -84,7 +85,7 @@ class Ui_MinecraftLauncher(object):
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.quit = QPushButton(self.widget)
+        self.quit = QPushButton(self.layoutWidget)
         self.quit.setObjectName(u"quit")
         sizePolicy2 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
         sizePolicy2.setHorizontalStretch(1)
@@ -94,7 +95,7 @@ class Ui_MinecraftLauncher(object):
 
         self.horizontalLayout.addWidget(self.quit)
 
-        self.rungameButton = QPushButton(self.widget)
+        self.rungameButton = QPushButton(self.layoutWidget)
         self.rungameButton.setObjectName(u"rungameButton")
         sizePolicy3 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
         sizePolicy3.setHorizontalStretch(0)
@@ -119,28 +120,31 @@ class Ui_MinecraftLauncher(object):
         self.tabWidget.addTab(self.main, "")
         self.setting = QWidget()
         self.setting.setObjectName(u"setting")
-        self.widget1 = QWidget(self.setting)
-        self.widget1.setObjectName(u"widget1")
-        self.widget1.setGeometry(QRect(13, 4, 831, 441))
-        self.horizontalLayout_5 = QHBoxLayout(self.widget1)
+        self.layoutWidget1 = QWidget(self.setting)
+        self.layoutWidget1.setObjectName(u"layoutWidget1")
+        self.layoutWidget1.setGeometry(QRect(13, 4, 831, 441))
+        self.horizontalLayout_5 = QHBoxLayout(self.layoutWidget1)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.game_path = QHBoxLayout()
         self.game_path.setObjectName(u"game_path")
-        self.game_path_label = QLabel(self.widget1)
+        self.game_path_label = QLabel(self.layoutWidget1)
         self.game_path_label.setObjectName(u"game_path_label")
 
         self.game_path.addWidget(self.game_path_label)
 
-        self.game_path_lineEdit = QLineEdit(self.widget1)
+        self.game_path_lineEdit = QLineEdit(self.layoutWidget1)
         self.game_path_lineEdit.setObjectName(u"game_path_lineEdit")
 
         self.game_path.addWidget(self.game_path_lineEdit)
 
-        self.game_select = QToolButton(self.widget1)
+        self.game_select = QToolButton(self.layoutWidget1)
         self.game_select.setObjectName(u"game_select")
+        icon = QIcon()
+        icon.addFile(u":/gmcl/assets/folder.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.game_select.setIcon(icon)
 
         self.game_path.addWidget(self.game_select)
 
@@ -149,18 +153,19 @@ class Ui_MinecraftLauncher(object):
 
         self.java_path = QHBoxLayout()
         self.java_path.setObjectName(u"java_path")
-        self.java_path_label = QLabel(self.widget1)
+        self.java_path_label = QLabel(self.layoutWidget1)
         self.java_path_label.setObjectName(u"java_path_label")
 
         self.java_path.addWidget(self.java_path_label)
 
-        self.java_path_lineEdit = QLineEdit(self.widget1)
+        self.java_path_lineEdit = QLineEdit(self.layoutWidget1)
         self.java_path_lineEdit.setObjectName(u"java_path_lineEdit")
 
         self.java_path.addWidget(self.java_path_lineEdit)
 
-        self.java_select = QToolButton(self.widget1)
+        self.java_select = QToolButton(self.layoutWidget1)
         self.java_select.setObjectName(u"java_select")
+        self.java_select.setIcon(icon)
 
         self.java_path.addWidget(self.java_select)
 
@@ -169,12 +174,12 @@ class Ui_MinecraftLauncher(object):
 
         self.username = QHBoxLayout()
         self.username.setObjectName(u"username")
-        self.username_label = QLabel(self.widget1)
+        self.username_label = QLabel(self.layoutWidget1)
         self.username_label.setObjectName(u"username_label")
 
         self.username.addWidget(self.username_label)
 
-        self.username_lineEdit = QLineEdit(self.widget1)
+        self.username_lineEdit = QLineEdit(self.layoutWidget1)
         self.username_lineEdit.setObjectName(u"username_lineEdit")
 
         self.username.addWidget(self.username_lineEdit)
@@ -184,12 +189,12 @@ class Ui_MinecraftLauncher(object):
 
         self.men = QHBoxLayout()
         self.men.setObjectName(u"men")
-        self.maxmen_label = QLabel(self.widget1)
+        self.maxmen_label = QLabel(self.layoutWidget1)
         self.maxmen_label.setObjectName(u"maxmen_label")
 
         self.men.addWidget(self.maxmen_label)
 
-        self.horizontalSlider = QSlider(self.widget1)
+        self.horizontalSlider = QSlider(self.layoutWidget1)
         self.horizontalSlider.setObjectName(u"horizontalSlider")
         self.horizontalSlider.setOrientation(Qt.Horizontal)
 
@@ -212,7 +217,7 @@ class Ui_MinecraftLauncher(object):
 
         self.retranslateUi(MinecraftLauncher)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MinecraftLauncher)
