@@ -30,8 +30,8 @@ class Main(QWidget, Ui_MinecraftLauncher):
         self.bind()
 
     def load(self):
-        self.java_select.setIcon(QIcon("./assets/folder.svg"))
-        self.game_select.setIcon(QIcon("./assets/folder.svg"))
+        # self.java_select.setIcon(QIcon("./assets/folder.svg"))
+        # self.game_select.setIcon(QIcon("./assets/folder.svg"))
         self.java_path_lineEdit.setText(self.config.get("java_path"))
         self.game_path_lineEdit.setText(self.config.get("game_dir"))
         self.get_version_list()
@@ -46,16 +46,18 @@ class Main(QWidget, Ui_MinecraftLauncher):
     def get_java_path(self):
         java_path, _ = QFileDialog.getOpenFileName(
             self, "", r"C:\\", "Java (java.exe)")
-        self.java_path_lineEdit.setText(java_path)
-        self.config.save("java_path", java_path)
-        self.java_path_lineEdit.setText(self.config.get("java_path"))
+        if java_path:  # 防止点取消后清空
+            self.java_path_lineEdit.setText(java_path)
+            self.config.save("java_path", java_path)
+            self.java_path_lineEdit.setText(self.config.get("java_path"))
 
     def get_game_path(self):
         game_dir = QFileDialog.getExistingDirectory(
             self, "选择游戏根目录", r"C:\\")
-        self.java_path_lineEdit.setText(game_dir)
-        self.config.save("game_dir", game_dir)
-        self.game_path_lineEdit.setText(self.config.get("game_dir"))
+        if game_dir:  # 防止点取消后清空
+            self.java_path_lineEdit.setText(game_dir)
+            self.config.save("game_dir", game_dir)
+            self.game_path_lineEdit.setText(self.config.get("game_dir"))
 
     def get_version_list(self):
         for i in scandir("./.minecraft/versions"):
