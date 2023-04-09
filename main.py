@@ -1,11 +1,11 @@
 from PySide6.QtGui import QIcon
-from PySide6.QtWidgets import QApplication, QFileDialog, QWidget
+from PySide6.QtWidgets import QApplication, QFileDialog, QMainWindow
 
 from os import scandir
 from threading import Thread
 from sys import exit
 
-from Ui_main import Ui_MinecraftLauncher
+from Ui_main import Ui_GMCL
 from gmclcore import run, Config
 
 
@@ -18,12 +18,13 @@ def rungame(java_path, game_path):
     rung.start()
 
 
-class Main(QWidget, Ui_MinecraftLauncher):
+class Main(QMainWindow, Ui_GMCL):
 
     def __init__(self):
         super().__init__()
         self.setupUi(self)
         self.retranslateUi(self)
+        self.c()
         self.config = Config()
         self.load()
         # self.ui = QUiLoader().load("assets/main.ui")
@@ -42,6 +43,13 @@ class Main(QWidget, Ui_MinecraftLauncher):
         self.java_select.clicked.connect(self.get_java_path)
         self.game_select.clicked.connect(self.get_game_path)
         self.quit.clicked.connect(exit)
+
+    def c(self):
+        self.stackedWidget.setCurrentIndex(0)
+        self.to0.setChecked(True)
+        self.to0.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
+        self.to1.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
+        self.to2.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
 
     def get_java_path(self):
         java_path, _ = QFileDialog.getOpenFileName(
