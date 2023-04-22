@@ -1,2 +1,1 @@
-pyinstaller main.py --noconsole --hidden-import PySide6.QtXml --icon="icon.ico"
-pause
+pyinstaller gmcl.py --noconsole --hidden-import PySide6.QtXml --icon="reinforced_deepslate.ico" --runtime-hook="runtimehook.py"

@@ -107,6 +107,8 @@ class Config:
             self.refresh()
         else:
             self.write(self.examples)
+            self.refresh()
+            
 
     def get(self, str):
         return self.config[str]
