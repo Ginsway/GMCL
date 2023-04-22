@@ -9,7 +9,7 @@ from Ui_main import Ui_MinecraftLauncher
 from gmclcore import run, Config
 
 
-def rungame(java_path, game_path):
+def run_game(java_path, game_path):
     # run(mcdir="D:/Project/PycharmProjects/MinecraftLauncher/.minecraft", version="1.19.4",
     # javaw_path="D:\Software\Java\jdk-17.0.4.1\\bin\javaw.exe",
     # max_men="1024M")
@@ -30,7 +30,7 @@ class Launcher(Ui_MinecraftLauncher, QMainWindow):
 
     def bind(self):
         self.run_btn.clicked.connect(lambda:
-                                     rungame(self.java_path_lineEdit.text(), self.game_path_lineEdit.text()))
+                                     run_game(self.java_path_lineEdit.text(), self.game_path_lineEdit.text()))
         self.java_select.clicked.connect(self.get_java_path)
         self.game_select.clicked.connect(self.get_game_path)
         self.quit_btn.clicked.connect(exit)

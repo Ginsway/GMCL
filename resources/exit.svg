@@ -1,0 +1,11 @@
+<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" class="feather feather-log-out" stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="black" fill="none">
+
+ <g>
+  <title _mstHash="1" _mstTextHash="5637814">第 1 层</title>
+  <g transform="rotate(180 12 12)" id="svg_4">
+   <path id="svg_1" d="m9,21l-4,0a2,2 0 0 1 -2,-2l0,-14a2,2 0 0 1 2,-2l4,0"/>
+   <polyline id="svg_2" points="16 17 21 12 16 7"/>
+   <line id="svg_3" y2="12" x2="9" y1="12" x1="21"/>
+  </g>
+ </g>
+</svg>

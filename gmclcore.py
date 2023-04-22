@@ -13,7 +13,7 @@ def unzip(filename, path) -> None:
 
 
 def run(mcdir, version, java_path, max_men, mc_args="") -> None:
-    classpath = ""
+    class_path = ""
 
     version_json = open(mcdir + "/versions/" + version +
                         "/" + version + ".json", "r")
@@ -40,17 +40,17 @@ def run(mcdir, version, java_path, max_men, mc_args="") -> None:
           mcdir + "/versions/" + version + "/" + version + "-natives" + \
           '" -Dminecraft.launcher.brand=launcher ' + \
           '-Dminecraft.launcher.version=1.0.0 -cp'
-    classpath += '"'  # 这一句我在教程里面写错了，应该填加在这里，让-cp以引号开头
+    class_path += '"'  # 这一句我在教程里面写错了，应该填加在这里，让-cp以引号开头
     for lib in dic["libraries"]:
         if "rules" not in lib.keys():
             normal = mcdir + "/libraries/" + \
                 lib["downloads"]["artifact"]["path"]  # 普通库路径
-            classpath += normal + ";"  # 将普通库路径追加到-cp后面
+            class_path += normal + ";"  # 将普通库路径追加到-cp后面
     # 将客户端文件传入-cp参数
-    classpath = classpath + mcdir + "/versions/" + \
+    class_path = class_path + mcdir + "/versions/" + \
         version + "/" + version + ".jar" + '"'
     # 设置最大运行内存
-    jvm = jvm + " " + classpath + " -Xmx" + max_men + \
+    jvm = jvm + " " + class_path + " -Xmx" + max_men + \
         " -Xmn256m -Dlog4j.formatMsgNoLookups=true"
     # 最大内存由变量maxMen决定,最小内存是256M
 
@@ -88,9 +88,8 @@ def run(mcdir, version, java_path, max_men, mc_args="") -> None:
     command_line = jvm + " " + mc_args
     print(command_line)
     # 使用bat的方法运行过长的命令条
-    bat = open("run.bat", "w")
-    bat.write(command_line)
-    bat.close()
+    with open("run.bat", "w") as bat:
+        bat.write(command_line)
     system("run.bat")
     # 视频中没有讲到的,在运行完Minecraft之后，删除run.bat，这样可以避免与其他文件冲突(如果真有人写了一个运行py文件的.bat文件，名字叫run.bat的话,别问我怎么知道的)
     remove("run.bat")
@@ -108,7 +107,6 @@ class Config:
         else:
             self.write(self.examples)
             self.refresh()
-            
 
     def get(self, str):
         return self.config[str]

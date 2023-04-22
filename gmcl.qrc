@@ -1,10 +1,14 @@
 <RCC>
   <qresource>
-    <file>resouces/user.svg</file>
-    <file>resouces/reinforced_deepslate.png</file>
-    <file>resouces/home.svg</file>
-    <file>resouces/log-out.svg</file>
-    <file>resouces/settings.svg</file>
-    <file>resouces/folder.svg</file>
+    <file>resources/exit.svg</file>
+    <file>resources/folder-plus.svg</file>
+    <file>resources/sliders.svg</file>
+    <file>resources/folder.svg</file>
+    <file>resources/home.svg</file>
+    <file>resources/log-out.svg</file>
+    <file>resources/reinforced_deepslate.png</file>
+    <file>resources/settings.svg</file>
+    <file>resources/sliders.svg</file>
+    <file>resources/user.svg</file>
   </qresource>
 </RCC>

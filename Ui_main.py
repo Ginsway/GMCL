@@ -25,9 +25,9 @@ class Ui_MinecraftLauncher(object):
     def setupUi(self, MinecraftLauncher):
         if not MinecraftLauncher.objectName():
             MinecraftLauncher.setObjectName(u"MinecraftLauncher")
-        MinecraftLauncher.resize(800, 600)
+        MinecraftLauncher.resize(854, 480)
         icon = QIcon()
-        icon.addFile(u":/resouces/reinforced_deepslate.png", QSize(), QIcon.Normal, QIcon.On)
+        icon.addFile(u":/resources/reinforced_deepslate.png", QSize(), QIcon.Normal, QIcon.On)
         MinecraftLauncher.setWindowIcon(icon)
         MinecraftLauncher.setAnimated(True)
         self.centralwidget = QWidget(MinecraftLauncher)
@@ -39,7 +39,7 @@ class Ui_MinecraftLauncher(object):
         self.home_btn = QToolButton(self.centralwidget)
         self.home_btn.setObjectName(u"home_btn")
         icon1 = QIcon()
-        icon1.addFile(u":/resouces/home.svg", QSize(), QIcon.Normal, QIcon.On)
+        icon1.addFile(u":/resources/home.svg", QSize(), QIcon.Normal, QIcon.On)
         self.home_btn.setIcon(icon1)
         self.home_btn.setAutoRepeat(False)
         self.home_btn.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
@@ -55,7 +55,7 @@ class Ui_MinecraftLauncher(object):
         self.user_btn = QToolButton(self.centralwidget)
         self.user_btn.setObjectName(u"user_btn")
         icon2 = QIcon()
-        icon2.addFile(u":/resouces/user.svg", QSize(), QIcon.Normal, QIcon.On)
+        icon2.addFile(u":/resources/user.svg", QSize(), QIcon.Normal, QIcon.On)
         self.user_btn.setIcon(icon2)
         self.user_btn.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
 
@@ -76,7 +76,7 @@ class Ui_MinecraftLauncher(object):
         self.quit_btn = QToolButton(self.centralwidget)
         self.quit_btn.setObjectName(u"quit_btn")
         icon3 = QIcon()
-        icon3.addFile(u":/resouces/log-out.svg", QSize(), QIcon.Normal, QIcon.On)
+        icon3.addFile(u":/resources/exit.svg", QSize(), QIcon.Normal, QIcon.On)
         self.quit_btn.setIcon(icon3)
 
         self.horizontalLayout.addWidget(self.quit_btn)
@@ -84,7 +84,7 @@ class Ui_MinecraftLauncher(object):
         self.setting_btn = QToolButton(self.centralwidget)
         self.setting_btn.setObjectName(u"setting_btn")
         icon4 = QIcon()
-        icon4.addFile(u":/resouces/settings.svg", QSize(), QIcon.Normal, QIcon.On)
+        icon4.addFile(u":/resources/settings.svg", QSize(), QIcon.Normal, QIcon.On)
         self.setting_btn.setIcon(icon4)
         self.setting_btn.setIconSize(QSize(16, 16))
 
@@ -133,6 +133,9 @@ class Ui_MinecraftLauncher(object):
 
         self.toolButton_7 = QToolButton(self.home)
         self.toolButton_7.setObjectName(u"toolButton_7")
+        icon5 = QIcon()
+        icon5.addFile(u":/resources/sliders.svg", QSize(), QIcon.Normal, QIcon.On)
+        self.toolButton_7.setIcon(icon5)
 
         self.horizontalLayout_3.addWidget(self.toolButton_7)
 
@@ -194,9 +197,9 @@ class Ui_MinecraftLauncher(object):
 
         self.game_select = QToolButton(self.setting)
         self.game_select.setObjectName(u"game_select")
-        icon5 = QIcon()
-        icon5.addFile(u":/gmcl/assets/folder.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.game_select.setIcon(icon5)
+        icon6 = QIcon()
+        icon6.addFile(u":/resources/folder-plus.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.game_select.setIcon(icon6)
 
         self.game_path.addWidget(self.game_select)
 
@@ -220,7 +223,7 @@ class Ui_MinecraftLauncher(object):
 
         self.java_select = QToolButton(self.setting)
         self.java_select.setObjectName(u"java_select")
-        self.java_select.setIcon(icon5)
+        self.java_select.setIcon(icon6)
 
         self.java_path.addWidget(self.java_select)
 
@@ -288,9 +291,9 @@ class Ui_MinecraftLauncher(object):
         self.toolButton_4.setText(QCoreApplication.translate("MinecraftLauncher", u"PushButton", None))
         self.quit_btn.setText(QCoreApplication.translate("MinecraftLauncher", u"...", None))
         self.setting_btn.setText(QCoreApplication.translate("MinecraftLauncher", u"...", None))
-        self.label.setText(QCoreApplication.translate("MinecraftLauncher", u"TextLabel", None))
+        self.label.setText(QCoreApplication.translate("MinecraftLauncher", u"\u9009\u62e9\u7248\u672c", None))
         self.toolButton_7.setText(QCoreApplication.translate("MinecraftLauncher", u"...", None))
-        self.run_btn.setText(QCoreApplication.translate("MinecraftLauncher", u"PushButton", None))
+        self.run_btn.setText(QCoreApplication.translate("MinecraftLauncher", u"\u542f\u52a8\u6e38\u620f", None))
         self.game_path_label.setText(QCoreApplication.translate("MinecraftLauncher", u"\u6e38\u620f\u6839\u76ee\u5f55", None))
         self.game_path_lineEdit.setText("")
         self.game_path_lineEdit.setPlaceholderText(QCoreApplication.translate("MinecraftLauncher", u"\u8bf7\u8f93\u5165\u6e38\u620f\u6839\u76ee\u5f55\uff08.minecraft\uff09", None))
