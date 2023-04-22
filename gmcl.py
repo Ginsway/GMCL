@@ -2,7 +2,9 @@
 from PySide6.QtWidgets import QWidget, QMainWindow, QApplication, QFileDialog
 
 from threading import Thread
-from os import scandir
+from os import scandir, makedirs
+from os.path import isdir
+from sys import exit
 from Ui_main import Ui_MinecraftLauncher
 from gmclcore import run, Config
 
@@ -70,6 +72,8 @@ class Launcher(Ui_MinecraftLauncher, QMainWindow):
             self.java_path_lineEdit.setText(self.config.get("java_path"))
 
     def get_version_list(self) -> None:
+        if not isdir("./.minecraft/versions"):
+            makedirs("./.minecraft/versions")
         for i in scandir("./.minecraft/versions"):
             if i.is_dir():
                 self.comboBox.addItem(i.name)
