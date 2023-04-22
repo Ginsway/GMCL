@@ -3,9 +3,8 @@ from PySide6.QtWidgets import QWidget, QMainWindow, QApplication, QFileDialog
 
 from threading import Thread
 from os import scandir
-from Ui_main import Ui_MainWindow
+from Ui_main import Ui_MinecraftLauncher
 from gmclcore import run, Config
-
 
 
 def rungame(java_path, game_path):
@@ -17,7 +16,7 @@ def rungame(java_path, game_path):
     rung.start()
 
 
-class Launcher(Ui_MainWindow, QMainWindow):
+class Launcher(Ui_MinecraftLauncher, QMainWindow):
     def __init__(self) -> None:
         super().__init__()
         self.setupUi(self)
