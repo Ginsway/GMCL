@@ -10,4 +10,3 @@ __pycache__/
 *.spec
 icon.ico
 *.exe
-*.ui
