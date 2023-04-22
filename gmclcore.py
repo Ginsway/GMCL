@@ -12,7 +12,7 @@ def unzip(filename, path) -> None:
             zipfile.extract(z, path)
 
 
-def run(mcdir, version, java_path, max_men, mc_args=""):
+def run(mcdir, version, java_path, max_men, mc_args="") -> None:
     classpath = ""
 
     version_json = open(mcdir + "/versions/" + version +
@@ -111,16 +111,16 @@ class Config:
     def get(self, str):
         return self.config[str]
 
-    def save(self, op, str):
+    def save(self, op, str) -> None:
         self.config[op] = str
         self.write(self.config)
 
-    def write(self, dict):
+    def write(self, dict) -> None:
         with open("gmcl.json", "w") as config:
             config.write(dumps(dict, ensure_ascii=False,
                          sort_keys=True, indent=4, separators=(',', ': ')))
 
-    def refresh(self):
+    def refresh(self) -> None:
         with open("gmcl.json", "r") as c:
             self.config = loads(c.read())
 

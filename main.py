@@ -1,12 +1,11 @@
-from PySide6.QtGui import QIcon
-from PySide6.QtWidgets import QApplication, QFileDialog, QMainWindow
 
-from os import scandir
+from PySide6.QtWidgets import QWidget, QMainWindow, QApplication, QFileDialog
+
 from threading import Thread
-from sys import exit
-
-from Ui_main import Ui_GMCL
+from os import scandir
+from Ui_main import Ui_MainWindow
 from gmclcore import run, Config
+
 
 
 def rungame(java_path, game_path):
@@ -18,48 +17,44 @@ def rungame(java_path, game_path):
     rung.start()
 
 
-class Main(QMainWindow, Ui_GMCL):
-
-    def __init__(self):
+class Launcher(Ui_MainWindow, QMainWindow):
+    def __init__(self) -> None:
         super().__init__()
         self.setupUi(self)
         self.retranslateUi(self)
-        self.c()
         self.config = Config()
         self.load()
-        # self.ui = QUiLoader().load("assets/main.ui")
         self.bind()
+        self.set_sidebar()
 
-    def load(self):
+    def bind(self):
+        self.run_btn.clicked.connect(lambda:
+                                     rungame(self.java_path_lineEdit.text(), self.game_path_lineEdit.text()))
+        self.java_select.clicked.connect(self.get_java_path)
+        self.game_select.clicked.connect(self.get_game_path)
+        self.quit_btn.clicked.connect(exit)
+
+    def load(self) -> None:
         # self.java_select.setIcon(QIcon("./assets/folder.svg"))
         # self.game_select.setIcon(QIcon("./assets/folder.svg"))
         self.java_path_lineEdit.setText(self.config.get("java_path"))
         self.game_path_lineEdit.setText(self.config.get("game_dir"))
         self.get_version_list()
 
-    def bind(self):
-        self.rungameButton.clicked.connect(lambda:
-                                           rungame(self.java_path_lineEdit.text(), self.game_path_lineEdit.text()))
-        self.java_select.clicked.connect(self.get_java_path)
-        self.game_select.clicked.connect(self.get_game_path)
-        self.quit.clicked.connect(exit)
-
-    def c(self):
+    def set_sidebar(self) -> None:
         self.stackedWidget.setCurrentIndex(0)
-        self.to0.setChecked(True)
-        self.to0.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
-        self.to1.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
-        self.to2.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
+        self.home_btn.clicked.connect(
+            lambda: self.stackedWidget.setCurrentIndex(0))
+        self.core_btn.clicked.connect(
+            lambda: self.stackedWidget.setCurrentIndex(1))
+        self.user_btn.clicked.connect(
+            lambda: self.stackedWidget.setCurrentIndex(2))
+        self.toolButton_4.clicked.connect(
+            lambda: self.stackedWidget.setCurrentIndex(3))
+        self.setting_btn.clicked.connect(
+            lambda: self.stackedWidget.setCurrentIndex(4))
 
-    def get_java_path(self):
-        java_path, _ = QFileDialog.getOpenFileName(
-            self, "", r"C:\\", "Java (java.exe)")
-        if java_path:  # 防止点取消后清空
-            self.java_path_lineEdit.setText(java_path)
-            self.config.save("java_path", java_path)
-            self.java_path_lineEdit.setText(self.config.get("java_path"))
-
-    def get_game_path(self):
+    def get_game_path(self) -> None:
         game_dir = QFileDialog.getExistingDirectory(
             self, "选择游戏根目录", r"C:\\")
         if game_dir:  # 防止点取消后清空
@@ -67,7 +62,15 @@ class Main(QMainWindow, Ui_GMCL):
             self.config.save("game_dir", game_dir)
             self.game_path_lineEdit.setText(self.config.get("game_dir"))
 
-    def get_version_list(self):
+    def get_java_path(self) -> None:
+        java_path, _ = QFileDialog.getOpenFileName(
+            self, "", r"C:\\", "Java (java.exe)")
+        if java_path:  # 防止点取消后清空
+            self.java_path_lineEdit.setText(java_path)
+            self.config.save("java_path", java_path)
+            self.java_path_lineEdit.setText(self.config.get("java_path"))
+
+    def get_version_list(self) -> None:
         for i in scandir("./.minecraft/versions"):
             if i.is_dir():
                 self.comboBox.addItem(i.name)
@@ -75,7 +78,6 @@ class Main(QMainWindow, Ui_GMCL):
 
 if __name__ == '__main__':
     app = QApplication([])
-    app.setWindowIcon(QIcon("assets/icon.png"))
-    main = Main()
+    main = Launcher()
     main.show()
     app.exec()

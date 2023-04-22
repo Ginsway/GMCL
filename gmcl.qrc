@@ -1,5 +1,10 @@
 <RCC>
-  <qresource prefix="gmcl">
-    <file>assets/folder.svg</file>
+  <qresource>
+    <file>resouces/user.svg</file>
+    <file>resouces/reinforced_deepslate.png</file>
+    <file>resouces/home.svg</file>
+    <file>resouces/log-out.svg</file>
+    <file>resouces/settings.svg</file>
+    <file>resouces/folder.svg</file>
   </qresource>
 </RCC>
